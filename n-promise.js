@@ -32,7 +32,8 @@ class NPromise{
         }; // then 方法里注册的回调函数
         this.promiseQueue = [] 
 
-        if (executor) {
+        if (executor) { 
+            // 当 executor 出错的时候，需要捕获错误
             try {
                 executor(val => {
                     this.Resolve(this,val)
