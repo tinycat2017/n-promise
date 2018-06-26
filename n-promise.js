@@ -33,11 +33,15 @@ class NPromise{
         this.promiseQueue = [] 
 
         if (executor) {
-            executor(val => {
-                this.Resolve(this,val)
-            }, err => {
+            try {
+                executor(val => {
+                    this.Resolve(this,val)
+                }, err => {
+                    this.reject(err)
+                }) 
+            } catch (err) {
                 this.reject(err)
-            })
+            }
         }
     }
     Resolve(promise, x) {
