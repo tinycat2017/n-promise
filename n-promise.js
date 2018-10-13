@@ -97,7 +97,7 @@ Promise.all = promiseArrays => {
         }
 
         for (let i = 0; i < promiseArrays.length; i++){
-            promiseArrays.then(res => {
+            promiseArrays[i].then(res => {
                 handleData(res,i)
             }, reject)
         }
@@ -107,7 +107,7 @@ Promise.all = promiseArrays => {
 Promise.race = promiseArrays => {
     return new Promise((resolve, reject) => {
         for (let i = 0; i < promiseArrays.length; i++){
-            promiseArrays.then(resolve, reject)
+            promiseArrays[i].then(resolve, reject)
         }
     })
 }
